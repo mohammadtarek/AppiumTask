@@ -10,6 +10,7 @@ public class Alerts extends BasePage{
     private WebElement donotRemindMe;
     private WebElement laterActivation;
     private  WebElement dismissBtnAftertransfer;
+    private WebElement remindMeLater;
     public Alerts(AppiumDriver driver) {
         super(driver);
     }
@@ -19,6 +20,7 @@ public class Alerts extends BasePage{
 
     }
     public void doNotRemindMe(){
+
         donotRemindMe=driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.widget.TextView[2]"));
         UiActions.clickBtn(donotRemindMe);
     }
@@ -29,5 +31,10 @@ public class Alerts extends BasePage{
     public void clickDismissAfterTran(){
         dismissBtnAftertransfer=driver.findElementByAccessibilityId("undefined-doubleButton-second");
         UiActions.clickBtn(dismissBtnAftertransfer);
+    }
+
+    public void remindMeLater(){
+        remindMeLater=driver.findElementByAccessibilityId("undefined-doubleButton-second");
+        UiActions.clickBtn(remindMeLater);
     }
 }

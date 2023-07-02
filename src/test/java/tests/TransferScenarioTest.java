@@ -1,13 +1,11 @@
 package tests;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
 import reader.ExcelReader;
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TransferScenarioTest extends BaseTest {
@@ -59,7 +57,13 @@ String transferedAmount="200";
         //skip and remove alerts
         Thread.sleep(10000);
         alertsObj=new Alerts(driver);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
         alertsObj.ignoreUpdateAlert();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        //alertsObj.remindMeLater();
+
         Thread.sleep(3000);
         alertsObj.doNotRemindMe();
         Thread.sleep(2000);
@@ -180,12 +184,9 @@ String transferedAmount="200";
         } catch (NumberFormatException e) {
             System.out.println("Invalid number format: " + balanceAfterTransfer);
         }
-
         int trans = Integer.parseInt(transferedAmount);
-
         int expected= before + trans;
-
-
+        System.out.println("this the balance After: "+balanceAfterTransfer);
         Assert.assertEquals(after,expected,"Problem of the account balance after the transfer process");
 
 
